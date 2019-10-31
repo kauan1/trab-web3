@@ -13,8 +13,12 @@ class Login extends Database{
 
     }
 
-    public function criarLogin($nome,$login,$senha){
-        return Database::query("insert into (nome,login,senha)VALUES('$nome','$login','$senha')");
+    public function criarLogin($user,$cpf,$nascimento,$telefone,$email,$senha){
+        return Database::query("insert into usuario (usuario,cpf,nascimento,telefone,email,senha) VALUES ('$user','$cpf','$nascimento','$telefone','$email','$senha')");
+    }
+
+    public function editarLogin($user,$telefone,$email,$senha){
+        return Database::query("UPDATE usuario SET telefone = '$telefone','$email','$senha' WHERE usuario = '$user'");
     }
 
     /** 
@@ -22,7 +26,7 @@ class Login extends Database{
      * Algoritmo retirado de: https://www.geradorcpf.com/script-validar-cpf-php.htm
      * Verifica se o cpf é verdadeiro
      */
-    public function validaCPF($cpf = null){
+    public static function validaCPF($cpf = null){
 
         // Verifica se um número foi informado
         if(empty($cpf)) {
