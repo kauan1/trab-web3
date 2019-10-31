@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+<html lang="pt-br">
+    <head>
+        <title>Tetris In the Mirror</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="tema.css">
+    </head>
+    <body>
+
+        <section>
+            <h2>Tetris In the Mirror</h2>
+            <div class="game-container">
+
+                <div class="botoes-sup">
+                    
+                    <div class="botao-superior bot-sp-esq">
+                        <a data-tipo="10x20" id="tamanhoP" href="#">10x20</a>
+                    </div>
+                    
+                    <div class="botao-superior bot-sp-dir">
+                        <a data-tipo="22x44" id="tamanhoG" href="#">22x44</a>
+                    </div>
+                    
+                </div>
+
+                <div class="lateral-esquerda">
+
+                    <div style="height: 0px"></div>                  
+                        
+                        <button class="buttom" onclick="moveBloco(P)" type="button">
+                            <img id="pause" alt="Pausar" src="image/pause.jpg">
+                        </button>
+                        
+                        <button class="buttom" onclick="musica()" type="button">
+                            <img id="som-image" alt="Musica" src="image/sem-som.jpg"> 
+                            <audio id="som" loop src="Tetris_theme.ogg"></audio>
+                        </button>
+                        
+                        <button class="buttom" id="rk" type="button">
+                            <img alt="ranking" src="image/rank.jpg">
+                        </button>
+                        
+                        <br>
+                                                
+                        <p>Proxima peça</p>
+                        <div class="placar placarPeca">
+                            <canvas id="peca"></canvas>
+                        </div>
+                        
+                        
+                        <div style="height: 15px"></div>
+                        <div class="fundo">
+                            
+                            <button class="buttom" onclick="moveBloco(CIMA)" type="button">
+                                <img  alt="Mover para cima" src="image/seta-top.jpg">
+                            </button><br><br>
+        
+                            <button class="buttom" onclick="moveBloco(ESQUERDA)" type="button">
+                                <img alt="Mover para esquerda" src="image/seta-left.jpg">
+                            </button>
+        
+                            <button class="buttom" onclick="moveBloco(ESPACO)" type="button">
+                                <img alt="Mover para total para cima" src="image/seta-circ.jpg">
+                            </button>
+        
+                            <button class="buttom" onclick="moveBloco(DIREITA)" type="button">
+                                <img alt="Mover para direita" src="image/seta-right.jpg">
+                            </button><br><br>
+        
+                            <button class="buttom" onclick="moveBloco(BAIXO)" type="button" style="margin-bottom: 10px;">
+                                <img alt="Rotacionar" src="image/seta-bottom.jpg">
+                            </button>
+                            
+                        </div>
+                        
+                    </div>
+                        
+                        <div class="game">
+                            
+                            <div id="rank">Rank<br></div>
+                            
+                            <canvas id="tetris" class="modo-10x20"></canvas>
+                            
+                        </div>
+        
+                    <div class="lateral-direita">
+                        <p>Tempo</p>
+                        <div class="placar" id="tempo"></div>
+
+                        <p>Pontuação</p>
+                        <div class="placar" id="pontos"></div>
+                        
+                        <p>Nivel</p>
+                        <div class="placar" id="nivel"></div>
+
+                        <p>Linhas</p>
+                        <div class="placar" id="linhasEliminadas"></div>
+                     
+                    </div> 
+            </div>            
+
+        </section>
+
+        <footer>
+            
+        </footer>
+        <script src="jquery-3.4.1.min.js"></script>
+        <script src="game.js"></script>
+    </body>
+</html>
