@@ -2,21 +2,25 @@
 
 class Login extends Database{
 
+    // verifica se existe ou não o login e senha
     public function verificarLogin($user,$pass){
         $dados = Database::fetch("Select * Usuario WHERE login = '$user' AND senha = '$pass'");
-
-        if(count($dados)){
-            return true;
-        }else{
-            return false;
-        }
-
+        return (bool) count($dados);
     }
 
+
+    // verifica a existencia de um usuario com tal cpf ou login
+    public function existe($user,$cpf){
+        $dados = Database::fetch("Select login,cpf Usuario WHERE login = '$user' or cpf = '$cpf' ");
+        return (bool) count($dados);
+    }
+
+    // cria um novo login
     public function criarLogin($user,$cpf,$nascimento,$telefone,$email,$senha){
         return Database::query("insert into usuario (usuario,cpf,nascimento,telefone,email,senha) VALUES ('$user','$cpf','$nascimento','$telefone','$email','$senha')");
     }
 
+    // edita o login do usuario
     public function editarLogin($user,$telefone,$email,$senha){
         return Database::query("UPDATE usuario SET telefone = '$telefone','$email','$senha' WHERE usuario = '$user'");
     }
