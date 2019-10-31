@@ -21,6 +21,15 @@ div{
     padding-bottom: 10px;
 }
 
+#divlogin{
+    margin: auto;
+    content: flex;
+}
+
+#divlogin p{
+    text-align: center;
+}
+#divlogin 
 .navbar .modo-game{
     display: flex;
     flex-direction: row;
