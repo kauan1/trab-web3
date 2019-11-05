@@ -1,0 +1,84 @@
+body{
+    height: 100%;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    background-image: url('C:\Users\turen\Documents\NetBeansProjects\template\image\tetris.jpg');
+    background-repeat: repeat;
+}
+
+p{
+    margin: 0px;
+    margin-left: 70px;
+    padding: 0px;
+}
+
+#background{
+    height: 80%;
+    width: 30%;
+    background:maroon;
+    margin: auto;
+    margin-top: 5%;
+    padding-top: 1%;
+    border: 3px solid black;
+}
+
+#top{
+    margin: auto;
+    padding: 0px;
+    padding-top: 15px;
+    height: 50%;
+    width: 70%;
+    background-color:wheat;
+    border: 3px solid black;
+}
+
+#bottom{
+    margin: 0px;
+    padding: 0px;
+    margin-top: 120px;
+    background-color: wheat;
+    height: 60%;
+    width: 99%;
+    border: 3px solid black;
+    
+}
+
+#button{
+    margin-left: 40%;
+    padding: 0px;    
+    margin-top: 5%;
+    height: 75%;
+    width: 50%;
+    background:gray;
+    border: 1px solid black;
+    border-radius: 50% 0% 50% 0%
+}
+
+.input{
+    width: 40%;
+    height: 10%;
+    border: 1px solid black;
+}
+
+#login{
+    margin-top: 90px;
+}
+
+.submit{
+    margin-top: 5px;
+    text-align: center;
+    margin-left: 50%;
+    border: 2px solid black;
+    border-radius:50%;
+    height: 45%;
+    width: 45%;
+    background-color:yellow;
+}
+
+#register{
+    margin:0px;
+    margin-left: 10%;
+    
+}
+
