@@ -12,7 +12,7 @@ $rank =  new Rank();
 
 //caso for requisição post
 if(isset($_POST['nivel']) && isset($_POST['linhas']) && isset($_POST['tempo'])){
-    $result = $rank->insereRank($_SESSION['usuario'],$_POST['nivel'],$_POST['linhas'],$_POST['tempo']);
+    $result = $rank->insereRank($_SESSION['usuario'],$_POST['pontuacao'],$_POST['nivel'],$_POST['linhas'],$_POST['tempo']);
     echo json_encode((object)["sucesso" => true]);
 }else{
     $dados = $rank->exibeRank();

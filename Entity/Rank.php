@@ -28,8 +28,8 @@ class Rank extends Database{
 
     }
 
-    public function insereRank($user,$nivel,$linhas,$tempo){
-        return Database::query("INSERT INTO rank (usuario,nivel,linhas,tempo,data) VALUES ('$user',$nivel,$linhas,$tempo,'"+date("Y-m-d H:i:s")+"')");
+    public function insereRank($user,$pontuacao,$nivel,$linhas,$tempo){
+        return Database::query("INSERT INTO rank (usuario,pontuacao,nivel,linhas,tempo,data) VALUES ('$user',$pontuacao,$nivel,$linhas,$tempo,'"+date("Y-m-d H:i:s")+"')");
     }
 
 }
