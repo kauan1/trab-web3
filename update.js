@@ -1,32 +1,27 @@
 $(document).ready(function(){
 
-    $("#loginForm").on("submit",function(event){
+    $("#updateForm").on("submit",function(event){
 
         //para que o form não atualize ou mude de pagina
         event.preventDefault();
 
         // envia requisição
         $.ajax({
-            url : "login.php",
+            url : "login.php?acao=editar",
             type : 'post',
-            data : $("#loginForm").serialize(), // passa os dados do form, mas pode passar objeto por objeto também
+            data : $("#updateForm").serialize(), // passa os dados do form, mas pode passar objeto por objeto também
         }).done(function(msg){ //trata em caso de sucesso
-            if(msg.logado){
+            if(msg.sucesso){
+                alert("Editado com sucesso!");
                 window.location.href="index.php";
-            }else{
-                alert("Login/senha inválidos!!");
-                $("#login,#password").val("");
             }
             //$("#resultado").html(msg);
         }).fail(function(jqXHR, textStatus, msg){//caso der erro
             //trata o erro aqui
+            alert("Falha ao criar!"+msg.msg);
         });
 
     });
 
-    // cria uma nova conta
-    $("#register").on("click",function(){
-        window.href.location = "login.php?acao=criar";
-    });
      
 });

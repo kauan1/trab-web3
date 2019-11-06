@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
-        <title>TODO supply a title</title>
+        <title>Atualizar meus dados</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="registerStyle.css">
+        <script src="jquery-3.4.1.min.js"></script>
+        <script scr="update.js"></script>
     </head>
     <body>
         <div id="background">
             
-            <form method="POST" action="login.php?acao=editar"> 
+            <form name="updateForm" method="POST" action="login.php?acao=editar"> 
                 
                 <div id="top">
                     

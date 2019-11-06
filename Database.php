@@ -3,10 +3,10 @@
 class Database{
 
     //constantes de conexão para o banco de dados
-    private $DB = "tetris";
-    private $ENDERECO =  "localhost";
-    private $USER = "root";
-    private $PASS = "";
+    private const $DB = "tetris";
+    private const $ENDERECO =  "localhost";
+    private const $USER = "root";
+    private const $PASS = "";
 
 
     // conexao do bd
@@ -38,7 +38,7 @@ class Database{
             }
 
         }catch(Exception $e){
-            echo "Houve um erro ao realizar a query: "+$e->getMessage();
+            echo "Houve um erro ao realizar a query: ".$e->getMessage();
             exit(1);
         }
 
@@ -56,10 +56,10 @@ class Database{
                 throw new Excepetion($sql);
             }
 
-            $dados = $this->conexao->fetchAll();
+            $dados = $this->conexao->fetchAll(PDO::FETCH_OBJ);
 
         }catch(Exception $e){
-            echo "Houve um erro ao realizar a query: "+$e->getMessage();
+            echo "Houve um erro ao realizar a query: ".$e->getMessage();
             exit(1);
         }
 

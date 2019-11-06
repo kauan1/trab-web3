@@ -782,33 +782,18 @@ function musica(){
     }
 }
 
-function rankSet(pontos,nome){
+function rankSet(rank,minhaposicao){
+
     
-    rank[rank.length] = {
-        'ponto': pontos,
-        'nome': nome,
-        'nivel': nivel,
-        'linhasEliminadas': linhasEliminadas,
-        'tempo': tempoPartida,
-    };
-
-    // ordena por bolha
-    for(var i=0;i<rank.length;i++){
-        for(var j=0;j<i;j++){
-            if(rank[i].ponto > rank[j].ponto){
-                var temp = rank[j];
-                rank[j] = rank[i];
-                rank[i] = temp;
-            }
-        }
-    }
-
-    if(rank.length - 5 > 0){
-        rank.splice(i,rank.length - 5);
-    }
 
     html = 'Rank<br><br>';
-    html+= '<span>Nome Ponto Nivel Linhas Tempo<span><br>';
+    
+    html+= '<span>Nome Ponto Nivel Linhas Tempo<span><br><br>';
+    if(minhaposicao.length){
+        html+= '<span class="minhaposicao">Minha posição:<span><br>';
+        html+= '<p class="minhaposicao">'+minhaposicao.nome+"..."+minhaposicao.ponto+"..."+minhaposicao.nivel+"..."+minhaposicao.linhasEliminadas+"..."+converteTempo(minhaposicao.tempo)+'</p><br>';
+    }
+    html+= '<br><br><span class="minhaposicao">Global:<span><br>';
     for(var i=0;i<rank.length;i++){
         html+= '<p class="ranked">'+rank[i].nome+"..."+rank[i].ponto+"..."+rank[i].nivel+"..."+rank[i].linhasEliminadas+"..."+converteTempo(rank[i].tempo)+'</p><br>';
     }
@@ -924,6 +909,12 @@ $(document).ready(function(){
     $("#rk").click(function(){
         var visivel = $("#rank").is(":visible");
         if(!visivel){
+            $.ajax({
+                url : "rank",
+                type : 'get',
+            }).done(function(msg){ //trata em caso de sucesso
+                rankSet(msg.dados.rank,msg.dados.posicao);
+            });
             $("#rank").show();
             pausaGame();
         }
@@ -932,6 +923,12 @@ $(document).ready(function(){
             rodarGame();
         }
     });
+
+    $("#logout").on('click',function(e){
+        $.get('login.php?acao=logout',function(data){
+
+        })
+     });
     
     $("#tamanhoP").on('click',function(e){
        $("#tetris").removeClass('modo-22x44').removeClass('modo-10x20').addClass('modo-10x20');

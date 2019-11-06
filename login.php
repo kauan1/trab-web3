@@ -56,8 +56,12 @@ if(isset($_GET['acao']) && $_GET['acao'] == 'criar'){
         echo json_encode((object)["sucesso" => true]);
 
     }else{
-        include("Boundary/telaEditarLogin.php");
+        include("Boundary/update.php");
     }
+}elseif(isset($_GET['acao']) && $_GET['acao'] == 'logout'){
+    session_destroy();
+    //retorna resultado
+    echo json_encode((object)["sucesso" => true]);
 }else{
     if(isset($_POST['user']) && isset($_POST['senha'])){
             
