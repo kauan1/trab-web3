@@ -327,16 +327,13 @@ function pausaGame(){
 function gameOver(){
     pausaGame();
     status = GAMEOVER;
-    nomeJogador = prompt("Iniciais do jogador", "digite 3 caracters");
-    if(nomeJogador != null){
-        nomeJogador = nomeJogador.trim();
-        while(nomeJogador.length != 3){
-            nomeJogador = prompt("Iniciais do jogador", "digite 3 caracters, por favor!");
-        }
-    }else{
-        nomeJogador = 's/n';
-    }
-    rankSet(pontuacao,nomeJogador);
+    $.ajax({
+        url : "rank.php",
+        type : 'post',
+        data : {'pontuacao':pontuacao,'nivel':nivel ,'linha':linhasEliminadas,'tempo': tempoPartida}, // passa os dados do form, mas pode passar objeto por objeto também
+    }).done(function(msg){ //trata em caso de sucesso
+        
+    });
 }
 
 
