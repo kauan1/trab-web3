@@ -3,10 +3,10 @@
 class Database{
 
     //constantes de conexão para o banco de dados
-    private const DB = "tetris";
-    private const ENDERECO =  "localhost";
-    private const USER = "root";
-    private const PASS = "";
+    private $DB = "tetris";
+    private $ENDERECO =  "localhost";
+    private $USER = "root";
+    private $PASS = "";
 
 
     // conexao do bd
@@ -19,9 +19,11 @@ class Database{
     // abre conexão com banco de dados
     private function conexao(){
         try{
-            $this->conexao = new PDO('mysql:host='+$this->ENDERECO+';dbname='+$this->DB, $this->USER, $this->PASS);
+            $this->conexao = new PDO("mysql:host=".$this->ENDERECO.";dbname=".$this->DB, 
+            $this->USER, 
+            $this->PASS);
         }catch(Exception $e){
-            echo "Houve um erro ao conectar ao banco de dados: "+$e->getMessage();
+            echo "Houve um erro ao conectar ao banco de dados: ".$e->getMessage();
             exit(1);
         }
     }

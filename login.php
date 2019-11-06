@@ -1,11 +1,11 @@
 <?php
 require_once "Config.php";
-require_once "Entity/Login.php"
+require_once "Entity/Login.php";
 
 if(isset($_GET['acao']) && $_GET['acao'] == 'criar'){    
 
     //caso for requisição post
-    if(isset($_POST['user']) && isset($_POST['cpf']) && isset($_POST['nascimento']) && isset($_POST['telefone']) && isset($_POST['email']) && isset($_POST['senha'])){
+    if(isset($_POST['name']) && isset($_POST['user']) && isset($_POST['cpf']) && isset($_POST['nasc']) && isset($_POST['telefone']) && isset($_POST['email']) && isset($_POST['password'])){
         
         //cria um objeto Login
         $login = new Login();
@@ -31,10 +31,10 @@ if(isset($_GET['acao']) && $_GET['acao'] == 'criar'){
         //grava no bd
         $result = $login->criarLogin($_POST['user'],$_POST['cpf'],$_POST['nascimento'],$_POST['telefone'],$_POST['email'],$_POST['senha']);
 
-        echo json_encode((object)["sucesso" => true])
+        echo json_encode((object)["sucesso" => true]);
 
     }else{
-        include("Boundary/telaCriarLogin.php");
+        include("Boundary/register.html");
     }
         
 }elseif(isset($_GET['acao']) && $_GET['acao'] == 'editar'){
@@ -53,7 +53,7 @@ if(isset($_GET['acao']) && $_GET['acao'] == 'criar'){
         $result = $login->editarLogin($_SESSION['usuario'],$_POST['telefone'],$_POST['email'],$_POST['senha']);
 
         //retorna resultado
-        echo json_encode((object)["sucesso" => true])
+        echo json_encode((object)["sucesso" => true]);
 
     }else{
         include("Boundary/telaEditarLogin.php");
@@ -71,9 +71,10 @@ if(isset($_GET['acao']) && $_GET['acao'] == 'criar'){
         $_SESSION['usuario'] = $_POST['user'];
 
         echo json_encode((object)["sucesso" => true,'logado' => $result]);
+        
 
     }else{
-        include("Boundary/telaLogin.php");
+        include("Boundary/login.html");
     }
     
 }
