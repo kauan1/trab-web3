@@ -3,10 +3,10 @@
 class Database{
 
     //constantes de conexão para o banco de dados
-    private const $DB = "tetris";
-    private const $ENDERECO =  "localhost";
-    private const $USER = "root";
-    private const $PASS = "";
+    private  $DB = "tetris";
+    private  $ENDERECO =  "localhost";
+    private  $USER = "root";
+    private  $PASS = "";
 
 
     // conexao do bd

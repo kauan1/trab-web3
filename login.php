@@ -5,7 +5,7 @@ require_once "Entity/Login.php";
 if(isset($_GET['acao']) && $_GET['acao'] == 'criar'){    
 
     //caso for requisição post
-    if(isset($_POST['name']) && isset($_POST['user']) && isset($_POST['cpf']) && isset($_POST['nasc']) && isset($_POST['telefone']) && isset($_POST['email']) && isset($_POST['password'])){
+    if(isset($_POST['name']) && isset($_POST['user']) && isset($_POST['cpf']) && isset($_POST['nascimento']) && isset($_POST['telefone']) && isset($_POST['email']) && isset($_POST['senha'])){
         
         //cria um objeto Login
         $login = new Login();
@@ -29,7 +29,7 @@ if(isset($_GET['acao']) && $_GET['acao'] == 'criar'){
         }
 
         //grava no bd
-        $result = $login->criarLogin($_POST['user'],$_POST['cpf'],$_POST['nascimento'],$_POST['telefone'],$_POST['email'],$_POST['senha']);
+        $result = $login->criarLogin($_POST['user'],$_POST['cpf'],$_POST['nascimento'],$_POST['telefone'],$_POST['email'],$_POST['senha'],$_POST['name']);
 
         echo json_encode((object)["sucesso" => true]);
 

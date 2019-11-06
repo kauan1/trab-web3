@@ -26,7 +26,7 @@ $(document).ready(function(){
 
     // cria uma nova conta
     $("#register").on("click",function(){
-        window.href.location = "login.php?acao=criar";
+        window.location.href = "login.php?acao=criar";
     });
      
 });

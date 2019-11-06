@@ -16,8 +16,8 @@ class Login extends Database{
     }
 
     // cria um novo login
-    public function criarLogin($user,$cpf,$nascimento,$telefone,$email,$senha){
-        return Database::query("insert into usuario (usuario,cpf,nascimento,telefone,email,senha) VALUES ('$user','$cpf','$nascimento','$telefone','$email','$senha')");
+    public function criarLogin($user,$cpf,$nascimento,$telefone,$email,$senha,$name){
+        return Database::query("insert into usuario (usuario,cpf,nome,nascimento,telefone,email,senha) VALUES ('$user','$cpf','$name','$nascimento','$telefone','$email','$senha')");
     }
 
     // edita o login do usuario
