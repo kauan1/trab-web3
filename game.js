@@ -924,7 +924,7 @@ $(document).ready(function(){
 
     $("#logout").on('click',function(e){
         $.get('login.php?acao=logout',function(data){
-
+            window.location.href="login.php";
         })
      });
     

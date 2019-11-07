@@ -18,9 +18,9 @@ CREATE SCHEMA IF NOT EXISTS `tetris` DEFAULT CHARACTER SET utf8 ;
 USE `tetris` ;
 
 -- -----------------------------------------------------
--- Table `tetris`.`usuario`
+-- Table `usuario`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `tetris`.`usuario` (
+CREATE TABLE IF NOT EXISTS `usuario` (
   `usuario` VARCHAR(200) NOT NULL,
   `cpf` CHAR(20) NOT NULL,
   `nome` CHAR(60) NULL,
@@ -34,9 +34,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `tetris`.`rank`
+-- Table `rank`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `tetris`.`rank` (
+CREATE TABLE IF NOT EXISTS `rank` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `usuario` VARCHAR(200) NOT NULL,
   `pontuacao` INT NULL,
@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `tetris`.`rank` (
   INDEX `fk_rank_usuario_idx` (`usuario` ASC),
   CONSTRAINT `fk_rank_usuario`
     FOREIGN KEY (`usuario`)
-    REFERENCES `tetris`.`usuario` (`usuario`)
+    REFERENCES `usuario` (`usuario`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
