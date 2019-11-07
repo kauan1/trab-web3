@@ -21,12 +21,12 @@ class Login extends Database{
     }
 
     // edita o login do usuario
-    public function editarLogin($user,$telefone,$email,$senha){
-        return Database::query("UPDATE usuario SET telefone = '$telefone','$email','$senha' WHERE usuario = '$user'");
+    public function editarLogin($user,$nome,$telefone,$email,$senha){
+        return Database::query("UPDATE usuario SET nome = '$nome',telefone = '$telefone',email = '$email',senha = '$senha' WHERE usuario = '$user'");
     }
 
     public function meuUser($user){
-        $dados = Database::fetch("Select * from Usuario WHERE login = '$user'");
+        $dados = Database::fetch("Select * from usuario WHERE usuario = '$user'");
         return $dados;
     }
 

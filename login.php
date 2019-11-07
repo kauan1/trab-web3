@@ -47,13 +47,13 @@ if(isset($_GET['acao']) && $_GET['acao'] == 'criar'){
         exit();
     }
 
-    if(isset($_POST['telefone']) && isset($_POST['email']) && isset($_POST['senha'])){
+    if(isset($_POST['telefone']) && isset($_POST['nome']) && isset($_POST['email']) && isset($_POST['senha'])){
             
         //cria um objeto Login
         $login = new Login();
 
         //grava no bd
-        $result = $login->editarLogin($_SESSION['usuario'],$_POST['telefone'],$_POST['email'],$_POST['senha']);
+        $result = $login->editarLogin($_SESSION['usuario'],$_POST['nome'],$_POST['telefone'],$_POST['email'],$_POST['senha']);
 
         //retorna resultado
         echo json_encode((object)["sucesso" => true]);
