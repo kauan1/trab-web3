@@ -48,15 +48,11 @@ class Database{
 
     // retorna todos os dados
     public function fetch($sql){
-
+        $dados = null;
         try{
-            $query = $this->conexao->query($sql);
-
-            if(!$query){
-                throw new Excepetion($sql);
-            }
-
-            $dados = $this->conexao->fetchAll(PDO::FETCH_OBJ);
+            $query = $this->conexao->prepare($sql);
+            if($query->execute())            
+            $dados = $query->fetchAll(PDO::FETCH_OBJ);
 
         }catch(Exception $e){
             echo "Houve um erro ao realizar a query: ".$e->getMessage();
