@@ -4,14 +4,14 @@ class Login extends Database{
 
     // verifica se existe ou não o login e senha
     public function verificarLogin($user,$pass){
-        $dados = Database::fetch("Select * from Usuario WHERE login = '$user' AND senha = '$pass'");
+        $dados = Database::fetch("Select usuario from usuario WHERE usuario = '$user' AND senha = '$pass'");        
         return (bool) count($dados);
     }
 
 
     // verifica a existencia de um usuario com tal cpf ou login
     public function existe($user,$cpf){
-        $dados = Database::fetch("Select login,cpf from Usuario WHERE login = '$user' or cpf = '$cpf' ");
+        $dados = Database::fetch("Select usuario,cpf from usuario WHERE usuario = '$user' or cpf = '$cpf' ");
         return (bool) count($dados);
     }
 

@@ -14,18 +14,21 @@ if(isset($_GET['acao']) && $_GET['acao'] == 'criar'){
         if(!Login::validaCPF($_POST['cpf'])){
             http_response_code(406);
             echo json_encode((object) array("sucesso" => false , 'msg'=> "Cpf inválido!"));
+            exit();
         }
 
         //verifica se o email é valido
         if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
             http_response_code(406);
             echo json_encode((object) array("sucesso" => false , 'msg'=> "Email inválido!"));
+            exit();
         }
 
         // verifica se já foi usado o cpf ou usuario
         if($login->existe($_POST['user'],$_POST['cpf'])){
             http_response_code(406);
             echo json_encode((object) array("sucesso" => false , 'msg'=> "CPF ou Login já cadastrados!"));
+            exit();
         }
 
         //grava no bd
@@ -71,8 +74,8 @@ if(isset($_GET['acao']) && $_GET['acao'] == 'criar'){
         //grava no bd
         $result = $login->verificarLogin($_POST['user'],$_POST['senha']);
 
-        // seta a session
-        $_SESSION['usuario'] = $_POST['user'];
+        if($result)
+            $_SESSION['usuario'] = $_POST['user']; // seta a session
 
         echo json_encode((object)["sucesso" => true,'logado' => $result]);
         

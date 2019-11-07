@@ -785,14 +785,14 @@ function rankSet(rank,minhaposicao){
 
     html = 'Rank<br><br>';
     
-    html+= '<span>Nome Ponto Nivel Linhas Tempo<span><br><br>';
+    html+= '<span>Posição Nome Ponto Nivel Linhas Tempo Data-hora<span><br><br>';
     if(minhaposicao.length){
         html+= '<span class="minhaposicao">Minha posição:<span><br>';
-        html+= '<p class="minhaposicao">'+minhaposicao.nome+"..."+minhaposicao.ponto+"..."+minhaposicao.nivel+"..."+minhaposicao.linhasEliminadas+"..."+converteTempo(minhaposicao.tempo)+'</p><br>';
+        html+= '<p class="minhaposicao">'+minhaposicao[0].posicao+"..."+minhaposicao[0].usuario+"..."+minhaposicao[0].pontuacao+"..."+minhaposicao[0].nivel+"..."+minhaposicao[0].linhas+"..."+converteTempo(minhaposicao[0].tempo)+"..."+(minhaposicao[0].data)+'</p><br>';
     }
-    html+= '<br><br><span class="minhaposicao">Global:<span><br>';
+    html+= '<br><br><span class="">Global:<span><br>';
     for(var i=0;i<rank.length;i++){
-        html+= '<p class="ranked">'+rank[i].nome+"..."+rank[i].ponto+"..."+rank[i].nivel+"..."+rank[i].linhasEliminadas+"..."+converteTempo(rank[i].tempo)+'</p><br>';
+        html+= '<p class="ranked">'+rank[i].posicao+"..."+rank[i].usuario+"..."+rank[i].pontuacao+"..."+rank[i].nivel+"..."+rank[i].linhas+"..."+converteTempo(rank[i].tempo)+"..."+(rank[i].data)+'</p><br>';
     }
 
     $("#rank").html(html);
@@ -907,9 +907,10 @@ $(document).ready(function(){
         var visivel = $("#rank").is(":visible");
         if(!visivel){
             $.ajax({
-                url : "rank",
+                url : "rank.php",
                 type : 'get',
             }).done(function(msg){ //trata em caso de sucesso
+                msg = JSON.parse(msg);
                 rankSet(msg.dados.rank,msg.dados.posicao);
             });
             $("#rank").show();

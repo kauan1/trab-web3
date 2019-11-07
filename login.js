@@ -11,6 +11,7 @@ $(document).ready(function(){
             type : 'post',
             data : $("#loginForm").serialize(), // passa os dados do form, mas pode passar objeto por objeto também
         }).done(function(msg){ //trata em caso de sucesso
+            msg = JSON.parse(msg);
             if(msg.logado){
                 window.location.href="index.php";
             }else{
@@ -19,7 +20,8 @@ $(document).ready(function(){
             }
             //$("#resultado").html(msg);
         }).fail(function(jqXHR, textStatus, msg){//caso der erro
-            //trata o erro aqui
+            msg = JSON.parse(jqXHR.responseText);
+            alert("Falha ao editar!"+msg.msg);
         });
 
     });

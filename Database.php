@@ -32,11 +32,6 @@ class Database{
     public function query($sql){
         try{
             $query = $this->conexao->exec($sql);
-
-            if(!$query){
-                throw new Excepetion($sql);
-            }
-
         }catch(Exception $e){
             echo "Houve um erro ao realizar a query: ".$e->getMessage();
             exit(1);

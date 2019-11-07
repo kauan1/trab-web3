@@ -7,20 +7,23 @@ class Rank extends Database{
         $dados = Database::fetch($sql);
 
         for($i=0;$i<count($dados);$i++){
-            $dados[i]->posicao = $i+1;
+            $dados[$i]->posicao = $i+1;
         }
 
-        $sql = "Select r.* , p.posicao
+        Database::query("SET @row_number = 0;");
+        $sql = "        
+        Select r.* , p.posicao
             FROM
                 rank r inner join 
-                (SELECT @curRank := @curRank + 1 AS posicao , usuario FROM rank ORDER BY pontuacao DESC) on r.usuario = p.usuario 
+                (SELECT @row_number := @row_number + 1 as posicao , usuario,id FROM rank ORDER BY pontuacao DESC) p on r.id = p.id 
             WHERE 
-                usuario = ".$_SESSION['usuario']." 
+                r.usuario = '".$_SESSION['usuario']."'
             ORDER BY 
                 pontuacao DESC
             LIMIT
                 1
         ";
+
         $posicao = Database::fetch($sql);
 
 
@@ -29,7 +32,7 @@ class Rank extends Database{
     }
 
     public function insereRank($user,$pontuacao,$nivel,$linhas,$tempo){
-        return Database::query("INSERT INTO rank (usuario,pontuacao,nivel,linhas,tempo,data) VALUES ('$user',$pontuacao,$nivel,$linhas,$tempo,'"+date("Y-m-d H:i:s")+"')");
+        return Database::query("INSERT INTO rank (usuario,pontuacao,nivel,linhas,tempo,data) VALUES ('$user',$pontuacao,$nivel,$linhas,$tempo,'".date("Y-m-d H:i:s")."')");
     }
 
 }
