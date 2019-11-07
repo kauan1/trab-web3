@@ -4,6 +4,7 @@
         <title>Tetris In the Mirror</title>
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="tema.css">
+        <script src="jquery-3.4.1.min.js"></script>
     </head>
     <body>
 
@@ -16,7 +17,10 @@
                     <div class="botao-superior bot-sp-esq">
                         <a data-tipo="10x20" id="tamanhoP" href="#">10x20</a>
                     </div>
-                    
+
+                    <div class="botao-superior bot-sp-midle">
+                        <a data-tipo="Sair" id="logout" href="#">Sair</a>
+                    </div>                    
                     <div class="botao-superior bot-sp-dir">
                         <a data-tipo="22x44" id="tamanhoG" href="#">22x44</a>
                     </div>
@@ -36,10 +40,15 @@
                             <audio id="som" loop src="Tetris_theme.ogg"></audio>
                         </button>
                         
-                        <button class="buttom" id="rk" type="button">
+                        <button class="buttom" id="rk" type="button" onclick="login.php">
                             <img alt="ranking" src="image/rank.jpg">
                         </button>
+
+                        <button class="buttom" id="refresh" type="button" onclick="window.location.href='login.php?acao=editar'">
+                            <img alt="Atualizar" src="image/Atualizar.png">
+                        </button>
                         
+
                         <br>
                                                 
                         <p>Proxima peça</p>
